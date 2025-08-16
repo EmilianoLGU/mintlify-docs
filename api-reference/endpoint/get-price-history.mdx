@@ -1,0 +1,36 @@
+---
+title: "Get Walmart Product Price History"
+description: "This endpoint accepts a Walmart product code and returns an array of the price history."
+---
+
+### Headers
+
+<ParamField path="x-api-key" type="string" required="false">
+  Your unique API key for authentication.
+
+  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys)\*\* page\*\*.
+</ParamField>
+
+### Body
+
+<ParamField path="walmart_product_code" type="string">
+  The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.
+</ParamField>
+
+### Response
+
+<ParamField path="upc" type="string">
+  The 12-digit universal product code (upc).
+</ParamField>
+
+<ParamField path="ean" type="string">
+  The 13-digit european article number(ean).
+</ParamField>
+
+<ParamField path="walmart_product_code" type="string">
+  The (typically) 6-12 digit walmart product code.
+</ParamField>
+
+<ParamField path="price_history" type="json">
+  Enter a description
+</ParamField>

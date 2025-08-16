@@ -1,0 +1,112 @@
+---
+title: "Get Walmart Product Details"
+openapi: "GET /walmart-product"
+description: "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data."
+sidebarTitle: "Get Walmart Product Details"
+---
+
+<RequestExample>
+
+```filename
+curl --request GET \
+  --url http://rivin.ai/api/walmart-product-details \
+  --header 'Authorization: Bearer <token>'
+```
+
+</RequestExample>
+
+### Headers
+
+<ParamField path="x-api-key" type="string" required="false">
+  Your unique API key for authentication.
+
+  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys)\*\* page\*\*.
+</ParamField>
+
+<Warning>
+  This API only accepts one parameter in the request body of either the: upc, ean, or walmart_product_code. Including multiple params will result in an error and no data will be retreived.
+</Warning>
+
+### Body
+
+<ParamField path="upc" type="string" required="false">
+  The 12-digit universal product code (upc) that will be used to search Walmart's catalog.
+</ParamField>
+
+<ParamField path="ean" type="string">
+  The 13-digit european article number (ean) that will be used to search Walmart's catalog.
+</ParamField>
+
+<ParamField path="walmart_product_code" type="string">
+  The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.
+</ParamField>
+
+### Response
+
+<ParamField path="upc" type="string">
+  The 12-digit universal product code (upc).
+</ParamField>
+
+<ParamField path="ean" type="string">
+  The 13-digit european article number(ean).
+</ParamField>
+
+<ParamField path="walmart_product_code" type="string">
+  The (typically) 6-12 digit walmart product code.
+</ParamField>
+
+<ParamField path="customer_rating" type="string">
+  The customer rating between 1 to 5 stars.
+</ParamField>
+
+<ParamField path="number_of_reviews" type="string">
+  The number of reviews.
+</ParamField>
+
+<ParamField path="categories" type="string">
+  The categories Walmat categorizes the product into. This includes the main category all the way down to sub-categories.
+</ParamField>
+
+<ParamField path="product_type" type="string">
+  The product type Walmart cateogories the product into. This is usually the last or second to last Walmart category.
+</ParamField>
+
+<ParamField path="in_stock" type="boolean">
+  A TRUE or FALSE boolean whether the product is in stock or not.
+</ParamField>
+
+<ParamField path="price" type="float">
+  The current price of the product buybox in USD down to the nearest cent.
+</ParamField>
+
+<ParamField path="variant_name_one" type="string">
+  The first variant name of a product (if present)
+</ParamField>
+
+<ParamField path="variant_value_one" type="string">
+  The first variant value of a product (if present)
+</ParamField>
+
+<ParamField path="variant_name_two" type="string">
+  The second variant name of a product (if present)
+</ParamField>
+
+<ParamField path="variant_value_two" type="string">
+  The second variant value of a product (if present)
+</ParamField>
+
+<ParamField path="variant_name_three" type="string">
+  The third variant name of a product (if present)
+</ParamField>
+
+<ParamField path="variant_value_three" type="string">
+  The third variant value of a product (if present)
+</ParamField>
+
+<ParamField path="variant_name_four" type="string">
+  The fourth variant name of a product (if present)
+</ParamField>
+
+<ParamField path="variant_value_four" type="string">
+  The first variant value of a product (if present)
+</ParamField>
