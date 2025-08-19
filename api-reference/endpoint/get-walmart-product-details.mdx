@@ -15,12 +15,18 @@ curl --request GET \
 
 </RequestExample>
 
+### Limits
+
+Our default rate limit for this API endpoint is **10 requests per second** per account.
+
+If your use case requires a higher throughput, please [reach out to us](https://cal.com/rivin-ai/30min) — we can raise your limits upon request.
+
 ### Headers
 
 <ParamField path="x-api-key" type="string" required="false">
   Your unique API key for authentication.
 
-  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys)\*\* page\*\*.
+  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys) page.
 </ParamField>
 
 <Warning>
@@ -29,7 +35,7 @@ curl --request GET \
 
 ### Body
 
-<ParamField path="upc" type="string" required="false">
+<ParamField path="upc" type="string">
   The 12-digit universal product code (upc) that will be used to search Walmart's catalog.
 </ParamField>
 
