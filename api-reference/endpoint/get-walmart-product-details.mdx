@@ -1,5 +1,5 @@
 ---
-title: "Get Walmart Product"
+title: "Get Walmart Product Details"
 openapi: "GET /walmart-product"
 description: "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data."
 sidebarTitle: "Get Walmart Product Details"
@@ -9,24 +9,18 @@ sidebarTitle: "Get Walmart Product Details"
 
 ```filename
 curl --request GET \
-  --url http://rivin.ai/api/walmart/product \
+  --url http://rivin.ai/api/walmart-product-details \
   --header 'Authorization: Bearer <token>'
 ```
 
 </RequestExample>
-
-### Limits
-
-Our default rate limit for this API endpoint is **10 requests per second** per account.
-
-If your use case requires a higher throughput, please [reach out to us](https://cal.com/rivin-ai/30min) — we can raise your limits upon request.
 
 ### Headers
 
 <ParamField path="x-api-key" type="string" required="false">
   Your unique API key for authentication.
 
-  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys) page.
+  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys)\*\* page\*\*.
 </ParamField>
 
 <Warning>
@@ -35,7 +29,7 @@ If your use case requires a higher throughput, please [reach out to us](https://
 
 ### Body
 
-<ParamField path="upc" type="string">
+<ParamField path="upc" type="string" required="false">
   The 12-digit universal product code (upc) that will be used to search Walmart's catalog.
 </ParamField>
 
@@ -61,12 +55,12 @@ If your use case requires a higher throughput, please [reach out to us](https://
   The (typically) 6-12 digit walmart product code.
 </ParamField>
 
-<ParamField path="customer_rating" type="string">
-  The customer rating between 1 to 5 stars.
+<ParamField path="brand" type="string">
+  Enter a description
 </ParamField>
 
-<ParamField path="number_of_reviews" type="string">
-  The number of reviews.
+<ParamField path="title" type="string">
+  Enter a description
 </ParamField>
 
 <ParamField path="categories" type="string">
@@ -77,42 +71,14 @@ If your use case requires a higher throughput, please [reach out to us](https://
   The product type Walmart cateogories the product into. This is usually the last or second to last Walmart category.
 </ParamField>
 
-<ParamField path="in_stock" type="boolean">
-  A TRUE or FALSE boolean whether the product is in stock or not.
-</ParamField>
-
-<ParamField path="price" type="float">
+<ParamField path="buybox_price" type="float">
   The current price of the product buybox in USD down to the nearest cent.
 </ParamField>
 
-<ParamField path="variant_name_one" type="string">
-  The first variant name of a product (if present)
+<ParamField path="customer_rating" type="string">
+  The customer rating between 1 to 5 stars.
 </ParamField>
 
-<ParamField path="variant_value_one" type="string">
-  The first variant value of a product (if present)
-</ParamField>
-
-<ParamField path="variant_name_two" type="string">
-  The second variant name of a product (if present)
-</ParamField>
-
-<ParamField path="variant_value_two" type="string">
-  The second variant value of a product (if present)
-</ParamField>
-
-<ParamField path="variant_name_three" type="string">
-  The third variant name of a product (if present)
-</ParamField>
-
-<ParamField path="variant_value_three" type="string">
-  The third variant value of a product (if present)
-</ParamField>
-
-<ParamField path="variant_name_four" type="string">
-  The fourth variant name of a product (if present)
-</ParamField>
-
-<ParamField path="variant_value_four" type="string">
-  The first variant value of a product (if present)
+<ParamField path="number_of_reviews" type="string">
+  The number of reviews.
 </ParamField>
