@@ -1,6 +1,5 @@
 ---
-title: "Introduction"
-description: "Welcome to Rivin.ai's API documentation!"
+title: "Welcome to Rivin.ai Developer API!"
 ---
 
 <img
@@ -15,34 +14,44 @@ description: "Welcome to Rivin.ai's API documentation!"
   alt="Hero Dark"
 />
 
-## Setting up
+Build powerful e-commerce applications with [Rivin.ai](http://Rivin.ai)'s comprehensive Walmart product data API. Access both real-time and historical product information, pricing, reviews, and more to enhance your applications and provide better experiences for your users.
 
-The first step to world-class documentation is setting up your editing environments.
+## **Getting Started**
 
-<CardGroup cols={2}>
-  <Card title="Edit Your Docs" icon="pen-to-square" href="https://mintlify.com/docs/quickstart">
-    Get your docs set up locally for easy development
-  </Card>
-  <Card title="Preview Changes" icon="image" href="https://mintlify.com/docs/development">
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+### **Authentication**
 
-## Make it yours
+All API requests require authentication using your API key. Include your key in the x-api-key header with every request:
 
-Update your docs to your brand and add valuable content for the best user conversion.
+<RequestExample>
 
-<CardGroup cols={2}>
-  <Card title="Customize Style" icon="palette" href="https://mintlify.com/docs/settings/global">
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card title="Reference APIs" icon="code" href="https://mintlify.com/docs/api-playground/openapi">
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card title="Add Components" icon="screwdriver-wrench" href="https://mintlify.com/docs/content/components/accordions">
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card title="Get Inspiration" icon="stars" href="https://mintlify.com/customers">
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+```x-api-key example
+curl -X GET "https://api.rivin.ai/walmart/product?upc=040094535309" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: YOUR_API_KEY_HERE"
+```
+
+</RequestExample>
+
+## **Credit System**
+
+[Rivin.ai](http://Rivin.ai) uses a credit-based pricing model to ensure fair usage and cost-effective access to our data:
+
+- **Basic API requests** (product lookup, basic data): **1 credit**
+- **Complex queries** (price history, units sold history, profitability analysis): **up to 25 credits**
+
+Credits are consumed based on the complexity and depth of data requested. Monitor your credit usage in your dashboard and purchase additional credits as needed.
+
+## **Rate Limits**
+
+Rate limits vary by endpoint and are designed to ensure optimal performance for all users:
+
+- **Real-time data lookup**: Lower rate limits for real-time queries
+- **Historical data analysis**: Higher rate limits due to pulling this data directly from our own databases
+
+**Customizable Limits**: Rate limits are fully adjustable based on your specific use case and requirements. [Contact our team](https://cal.com/rivin-ai/30min) to discuss custom rate limit configurations for high-volume applications or enterprise needs. We are happy to increase rate limits in order to meet your needs.
+
+## Questions or Requests?
+
+<Tip>
+  If you have data requirements that are not currently supported via Rivin.ai's API, please reach out by [scheduling a call with our team.](https://cal.com/rivin-ai/30min) We're constantly looking to depth to our data, and often create new endpoints on customer request.
+</Tip>

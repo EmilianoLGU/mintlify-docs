@@ -41,12 +41,12 @@ curl -X GET "http://localhost:3000/api/walmart/product?upc=040094535309" \
 </ParamField>
 
 <Warning>
-  This API only accepts one parameter in the request body of either the: upc, ean, or walmart_product_code. Including multiple params will result in an error and no data will be retreived.
+  This API only accepts one parameter in the request body of either the: upc, ean, or walmart_product_code. Including multiple parameters or no parameters will result in an error and no data will be retreived.
 </Warning>
 
 ### Body
 
-<ParamField path="upc" type="string" required="false">
+<ParamField path="upc" type="string">
   The 12-digit universal product code (upc) that will be used to search Walmart's catalog.
 </ParamField>
 
