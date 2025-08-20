@@ -19,6 +19,11 @@
       "get": {
         "summary": "Get Walmart Product Details",
         "description": "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data.",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "upc",
@@ -73,6 +78,11 @@
       "get": {
         "summary": "Get Walmart Product Price History",
         "description": "This endpoint accepts a Walmart product code and returns an array of the price history.",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "walmart_product_code",
@@ -112,6 +122,11 @@
       "post": {
         "summary": "Add Walmart Product To Oversight Tracking",
         "description": "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product.",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "description": "Product to add to oversight tracking",
           "content": {
@@ -149,6 +164,11 @@
       "delete": {
         "summary": "Delete Walmart Product From Oversight Tracking",
         "description": "This endpoint deletes a product from a user's tracked products in Rivin.ai's Oversight product.",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
