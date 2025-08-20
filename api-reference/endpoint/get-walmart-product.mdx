@@ -45,7 +45,7 @@ curl -X GET "http://rivin.ai/api/walmart/product?upc=040094535309" \
 <ParamField path="x-api-key" type="string" required="false">
   Your unique API key for authentication.
 
-  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys)\*\* page\*\*.
+  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://rivin.ai/settings)\*\* page\*\*.
 </ParamField>
 
 <Warning>
@@ -110,6 +110,7 @@ curl -X GET "http://rivin.ai/api/walmart/product?upc=040094535309" \
 
 <Note>
   **Null Values**: Some fields may return `null` when data is not available from Walmart's catalog. This commonly occurs with:
+
   - Products that are out of stock or discontinued
   - New products without customer reviews yet
   - Products with incomplete catalog information
