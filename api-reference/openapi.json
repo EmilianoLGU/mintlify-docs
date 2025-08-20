@@ -6,13 +6,15 @@
     "license": {
       "name": "MIT"
     },
-    "version": "1.0.0"
-  },
+      "version": "1.0.0"
+},
   "servers": [
     {
-      "url": "http://rivin.ai/api"
+      "url": "https://rivin.ai/api",
+      "description": "Production API server"
     }
   ],
+
   "security": [
     {
       "apiKeyAuth": []
