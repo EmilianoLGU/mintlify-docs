@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Rivin.ai Developer API",
   "colors": {
-    "primary": "#5b2bcb",
-    "light": "#5b2bcb",
-    "dark": "#5b2bcb"
+    "primary": "#16A34A",
+    "light": "#16A34A",
+    "dark": "#16A34A"
   },
   "favicon": "/favicon.ico",
   "navigation": {
