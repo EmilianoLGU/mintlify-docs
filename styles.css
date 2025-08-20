@@ -1,0 +1,93 @@
+/* Make the dark SVG logo bigger - multiple targeting strategies */
+.navbar-logo img[src*="dark.svg"],
+.navbar-logo svg[src*="dark.svg"],
+.navbar-logo img[src*="logo/dark.svg"],
+.navbar-logo svg[src*="logo/dark.svg"] {
+  height: 30px !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Add spacing around the logo container */
+.navbar-logo {
+  padding: 15px 0 !important;
+  margin: 15px 0 !important;
+  min-height: 60px !important;
+}
+
+/* Alternative selectors for the dark logo */
+[data-testid="navbar-logo"] img[src*="dark.svg"],
+[data-testid="navbar-logo"] svg[src*="dark.svg"],
+[data-testid="navbar-logo"] img[src*="logo/dark.svg"],
+[data-testid="navbar-logo"] svg[src*="logo/dark.svg"] {
+  height: 30px !important;
+  width: auto !important;
+}
+
+/* Add spacing around the alternative logo container */
+[data-testid="navbar-logo"] {
+  padding: 15px 0 !important;
+  margin: 15px 0 !important;
+  min-height: 60px !important;
+}
+
+/* Target by file path variations */
+img[src*="dark.svg"],
+svg[src*="dark.svg"],
+img[src*="logo/dark.svg"],
+svg[src*="logo/dark.svg"] {
+  height: 80px !important;
+  width: auto !important;
+}
+
+/* Force all SVG elements in navbar to be bigger */
+.navbar svg,
+.navbar-logo svg,
+[data-testid="navbar-logo"] svg {
+  height: 80px !important;
+  width: auto !important;
+}
+
+/* Force spacing on any navbar logo elements */
+.navbar-logo *,
+[data-testid="navbar-logo"] *,
+.logo *,
+.navbar-brand * {
+  margin: 15px 0 !important;
+  padding: 15px 0 !important;
+}
+
+/* Target the navbar itself to add spacing */
+.navbar {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+/* Force minimum height on navbar */
+.navbar,
+.navbar-logo,
+[data-testid="navbar-logo"] {
+  min-height: 80px !important;
+}
+
+/* TARGETED SPACING - Only affect logo containers, not entire navbar */
+.navbar-logo,
+[data-testid="navbar-logo"],
+.logo,
+.navbar-brand {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  min-height: 80px !important;
+}
+
+/* Target any element that might contain the logo */
+img[src*="dark.svg"],
+svg[src*="dark.svg"],
+img[src*="logo/dark.svg"],
+svg[src*="logo/dark.svg"] {
+  margin: 20px 0 !important;
+  padding: 20px 0 !important;
+  display: block !important;
+} 
