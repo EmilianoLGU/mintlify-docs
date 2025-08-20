@@ -16,13 +16,11 @@
           {
             "group": "Get Started",
             "pages": [
-              "introduction",
-              "quickstart",
-              "development"
+              "introduction"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "API Reference",
             "pages": [
               "essentials/markdown",
               "essentials/code",
