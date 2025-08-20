@@ -31,10 +31,20 @@
             ]
           },
           {
-            "group": "Endpoints",
+            "group": "Real-time Product Info",
             "pages": [
-              "api-reference/endpoint/get-walmart-product",
-              "api-reference/endpoint/get-price-history",
+              "api-reference/endpoint/get-walmart-product"
+            ]
+          },
+          {
+            "group": "Historical Product Info",
+            "pages": [
+              "api-reference/endpoint/get-price-history"
+            ]
+          },
+          {
+            "group": "Oversight Product Management",
+            "pages": [
               "api-reference/endpoint/post-walmart-oversight-product",
               "api-reference/endpoint/delete-walmart-oversight-product"
             ]

@@ -14,12 +14,6 @@
       "description": "Production API server"
     }
   ],
-
-  "security": [
-    {
-      "apiKeyAuth": []
-    }
-  ],
   "paths": {
     "/walmart/product": {
       "get": {
