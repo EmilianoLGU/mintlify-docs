@@ -22,7 +22,7 @@
           {
             "group": "API Reference",
             "pages": [
-              "essentials/markdown",
+              "api-reference/endpoint/get-walmart-product",
               "essentials/code",
               "essentials/images",
               "essentials/settings",
@@ -44,7 +44,6 @@
           {
             "group": "Endpoint Examples",
             "pages": [
-              "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete",
               "api-reference/endpoint/webhook"
