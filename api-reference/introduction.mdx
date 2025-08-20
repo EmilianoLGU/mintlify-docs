@@ -1,33 +1,77 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Rivin.ai Walmart API Reference'
+description: 'Complete API reference for accessing Walmart product data, price history, and oversight tracking'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Welcome to Rivin.ai Walmart API
 
-## Welcome
+The Rivin.ai Walmart API provides comprehensive access to Walmart's product catalog, including real-time pricing, historical data, customer reviews, and product categorization. Build powerful e-commerce applications with accurate, up-to-date product information.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## **API Overview**
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Our API offers three main categories of endpoints:
 
-## Authentication
+### **Product Information**
+- **GET** `/walmart/product` - Retrieve detailed product information using UPC, EAN, or Walmart product codes
+- **GET** `/walmart/product/price-history` - Access historical pricing data for products
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+### **Oversight Tracking**
+- **POST** `/walmart/oversight/product` - Add products to your oversight tracking system
+- **DELETE** `/walmart/oversight/product/{id}` - Remove products from oversight tracking
+
+## **Authentication**
+
+All API endpoints require authentication using your API key. Include your key in the `x-api-key` header with every request:
 
 ```json
 "security": [
   {
-    "bearerAuth": []
+    "apiKeyAuth": []
   }
 ]
 ```
+
+<RequestExample>
+
+```bash Authentication Example
+curl -X GET "https://rivin.ai/api/walmart/product?upc=040094535309" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: YOUR_API_KEY_HERE"
+```
+
+</RequestExample>
+
+## **Base URL**
+
+All API requests should be made to:
+```
+https://rivin.ai/api
+```
+
+## **Response Format**
+
+All API responses are returned in JSON format with appropriate HTTP status codes:
+
+- **200** - Success
+- **400** - Bad Request (invalid parameters)
+- **401** - Unauthorized (invalid or missing API key)
+- **404** - Not Found
+- **500** - Internal Server Error
+
+## **Rate Limits**
+
+Rate limits are applied per API key to ensure fair usage across all users. Contact our team for custom rate limit configurations for high-volume applications.
+
+## **Getting Help**
+
+- **Documentation**: This reference covers all available endpoints and parameters
+- **Support**: Reach out to our team for additional assistance
+- **API Status**: Check our status page for real-time API health information
+
+<Card
+  title="OpenAPI Specification"
+  icon="code"
+  href="https://github.com/your-repo/blob/main/api-reference/openapi.json"
+>
+  View the complete OpenAPI specification file
+</Card>
