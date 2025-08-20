@@ -7,8 +7,8 @@ sidebarTitle: "Get Walmart Product Details"
 
 <RequestExample>
 
-```filename Example UPC Request
-curl -X GET "http://localhost:3000/api/walmart/product?upc=040094535309" \
+```bash Example UPC Request
+curl -X GET "http://rivin.ai/api/walmart/product?upc=040094535309" \
   -H "Content-Type: application/json" \
   -H "x-api-key: (YOUR_API_KEY_HERE)"
 ```
@@ -17,7 +17,7 @@ curl -X GET "http://localhost:3000/api/walmart/product?upc=040094535309" \
 
 <ResponseExample>
 
-```Example API Response
+```json API Response
 {
   "upc": "040094535309",
   "ean": "0400945353092",

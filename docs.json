@@ -1,5 +1,5 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
+  "$schema": "https://rivin.ai/docs.json",
   "theme": "mint",
   "name": "Rivin.ai Developer API",
   "colors": {
@@ -46,13 +46,13 @@
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://docs.rivin.ai/api-reference/introduction",
           "icon": "book-open-cover"
         },
         {
           "anchor": "Community",
           "href": "https://rivin.ai/community",
-          "icon": "slack"
+          "icon": "discord"
         },
         {
           "anchor": "Blog",
