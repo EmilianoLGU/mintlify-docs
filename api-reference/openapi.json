@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Rivin.ai API",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Rivin.ai Walmart API",
+    "description": "API for retrieving Walmart product information, price history, and managing oversight tracking",
     "license": {
       "name": "MIT"
     },
@@ -10,26 +10,42 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "http://rivin.ai/api"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "apiKeyAuth": []
     }
   ],
   "paths": {
     "/walmart/product": {
       "get": {
-        "description": "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data",
+        "summary": "Get Walmart Product Details",
+        "description": "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data.",
         "parameters": [
           {
-            "name": "limit",
+            "name": "upc",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "The 12-digit universal product code (upc) that will be used to search Walmart's catalog.",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
+            }
+          },
+          {
+            "name": "ean",
+            "in": "query",
+            "description": "The 13-digit european article number (ean) that will be used to search Walmart's catalog.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "walmart_product_code",
+            "in": "query",
+            "description": "The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -39,10 +55,85 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
+                  "$ref": "#/components/schemas/WalmartProduct"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/product/price-history": {
+      "get": {
+        "summary": "Get Walmart Product Price History",
+        "description": "This endpoint accepts a Walmart product code and returns an array of the price history.",
+        "parameters": [
+          {
+            "name": "walmart_product_code",
+            "in": "query",
+            "description": "The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/oversight/product": {
+      "post": {
+        "summary": "Add Walmart Product To Oversight Tracking",
+        "description": "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product.",
+        "requestBody": {
+          "description": "Product to add to oversight tracking",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OversightProduct"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Product added to oversight tracking",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OversightProduct"
                 }
               }
             }
@@ -59,65 +150,26 @@
           }
         }
       },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/walmart/product/price-history": {
-      "post": {
-        "description": "Deletes a single plant based on the ID supplied",
+      "delete": {
+        "summary": "Delete Walmart Product From Oversight Tracking",
+        "description": "This endpoint deletes a product from a user's tracked products in Rivin.ai's Oversight product.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "ID of the oversight product to delete",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Plant deleted",
-            "content": {}
+            "description": "Product deleted from oversight tracking"
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
@@ -125,28 +177,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
-        "requestBody": {
-          "description": "Plant added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
           }
         }
       }
@@ -154,41 +184,110 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "WalmartProduct": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
+          "upc": {
+            "description": "The 12-digit universal product code (upc).",
             "type": "string"
           },
-          "tag": {
-            "description": "Tag to specify the type",
+          "ean": {
+            "description": "The 13-digit european article number(ean).",
+            "type": "string"
+          },
+          "walmart_product_code": {
+            "description": "The (typically) 6-12 digit walmart product code.",
+            "type": "string"
+          },
+          "brand": {
+            "description": "The brand of the product",
+            "type": "string"
+          },
+          "title": {
+            "description": "The title/name of the product",
+            "type": "string"
+          },
+          "categories": {
+            "description": "The categories Walmart categorizes the product into. This includes the main category all the way down to sub-categories.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "product_type": {
+            "description": "The product type Walmart categorizes the product into. This is usually the last or second to last Walmart category.",
+            "type": "string"
+          },
+          "buybox_price": {
+            "description": "The current price of the product buybox in USD down to the nearest cent.",
+            "type": "number",
+            "format": "float"
+          },
+          "customer_rating": {
+            "description": "The customer rating between 1 to 5 stars.",
+            "type": "string"
+          },
+          "number_of_reviews": {
+            "description": "The number of reviews.",
             "type": "string"
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
+      "PriceHistory": {
+        "type": "object",
+        "properties": {
+          "upc": {
+            "description": "The 12-digit universal product code (upc).",
+            "type": "string"
           },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+          "ean": {
+            "description": "The 13-digit european article number(ean).",
+            "type": "string"
+          },
+          "walmart_product_code": {
+            "description": "The (typically) 6-12 digit walmart product code.",
+            "type": "string"
+          },
+          "price_history": {
+            "description": "Array of price history data",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "price": {
+                  "type": "number",
+                  "format": "float"
+                }
               }
             }
           }
-        ]
+        }
+      },
+      "OversightProduct": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the oversight product",
+            "type": "string"
+          },
+          "walmart_product_code": {
+            "description": "The Walmart product code being tracked",
+            "type": "string"
+          },
+          "user_id": {
+            "description": "The user ID who is tracking this product",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "When the product was added to oversight",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "Error": {
         "required": [
@@ -208,9 +307,10 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
       }
     }
   }
