@@ -93,13 +93,20 @@ curl -X GET "http://rivin.ai/api/walmart/product?upc=040094535309" \
 </ParamField>
 
 <ParamField path="buybox_price" type="float">
-  The current price of the product buybox in USD down to the nearest cent.
+  The current price of the product buybox in USD down to the nearest cent. Returns `null` if no current price is available.
 </ParamField>
 
 <ParamField path="customer_rating" type="string">
-  The customer rating between 1 to 5 stars.
+  The customer rating between 1 to 5 stars. Returns `null` if no customer ratings are available.
 </ParamField>
 
 <ParamField path="number_of_reviews" type="string">
-  The number of reviews.
+  The number of reviews. Returns `null` if no customer reviews are available.
 </ParamField>
+
+<Note>
+  **Null Values**: Some fields may return `null` when data is not available from Walmart's catalog. This commonly occurs with:
+  - Products that are out of stock or discontinued
+  - New products without customer reviews yet
+  - Products with incomplete catalog information
+</Note>
