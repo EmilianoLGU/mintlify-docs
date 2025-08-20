@@ -1,12 +1,11 @@
 {
-  "$schema": "https://rivin.ai/docs.json",
+  "$schema": "https://docs.rivin.ai/docs.json",
   "theme": "mint",
-  "styles": "/styles.css",
   "name": "Rivin.ai Developer API",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#16A34A",
-    "dark": "#16A34A"
+    "primary": "#5b2bcb",
+    "light": "#5b2bcb",
+    "dark": "#5b2bcb"
   },
   "favicon": "/favicon.ico",
   "navigation": {
@@ -32,20 +31,10 @@
             ]
           },
           {
-            "group": "Real-time Product Info",
+            "group": "Endpoints",
             "pages": [
-              "api-reference/endpoint/get-walmart-product"
-            ]
-          },
-          {
-            "group": "Historical Product Info",
-            "pages": [
-              "api-reference/endpoint/get-price-history"
-            ]
-          },
-          {
-            "group": "Oversight Product Management",
-            "pages": [
+              "api-reference/endpoint/get-walmart-product",
+              "api-reference/endpoint/get-price-history",
               "api-reference/endpoint/post-walmart-oversight-product",
               "api-reference/endpoint/delete-walmart-oversight-product"
             ]
@@ -75,8 +64,7 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
-    "size": "large"
+    "dark": "/logo/dark.svg"
   },
   "navbar": {
     "links": [
