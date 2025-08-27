@@ -88,5 +88,7 @@ curl -X GET "http://rivin.ai/api/walmart/product/price-history?walmart_product_c
 <Note>
   This api/walmart/product/price-history endpoint **only tracks the Walmart buybox price and time** — not prices for each individual seller on a listing.
 
-  If you need per-seller visibility (prices, units in stock, sales per seller, etc.), please reference the **/api/walmart/oversight** endpoints instead.
+  [Rivin.ai](http://Rivin.ai) **periodically pulls prices for different products** depending on their **monthly sales volume**, with high-volume products tracked more frequently.
+
+  If you need to **guarantee tracking** of a specific product (including prices per seller, inventory in stock per seller, and sales captured per seller), use our **/api/walmart/oversight** endpoints instead.
 </Note>
