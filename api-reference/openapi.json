@@ -19,6 +19,8 @@
       "get": {
         "summary": "Get Walmart Product Details",
         "description": "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data.",
+        "operationId": "getWalmartProductDetails",
+        "tags": ["Walmart Products"],
         "security": [
           {
             "apiKeyAuth": []
@@ -31,7 +33,8 @@
             "description": "The 12-digit universal product code (upc) that will be used to search Walmart's catalog.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "040094535309"
           },
           {
             "name": "ean",
@@ -39,7 +42,8 @@
             "description": "The 13-digit european article number (ean) that will be used to search Walmart's catalog.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "0400945353092"
           },
           {
             "name": "walmart_product_code",
@@ -47,7 +51,8 @@
             "description": "The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "1288567194"
           }
         ],
         "responses": {
@@ -62,7 +67,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error",
+            "description": "Bad request - Invalid parameters or missing required fields",
             "content": {
               "application/json": {
                 "schema": {
@@ -78,6 +83,8 @@
       "get": {
         "summary": "Get Walmart Product Price History",
         "description": "This endpoint accepts a Walmart product code and returns an array of the price history.",
+        "operationId": "getWalmartProductPriceHistory",
+        "tags": ["Walmart Products"],
         "security": [
           {
             "apiKeyAuth": []
@@ -91,7 +98,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "1370971228"
           }
         ],
         "responses": {
@@ -122,6 +130,8 @@
       "post": {
         "summary": "Add Walmart Product To Oversight Tracking",
         "description": "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product.",
+        "operationId": "addWalmartOversightProduct",
+        "tags": ["Walmart Oversight"],
         "security": [
           {
             "apiKeyAuth": []
