@@ -1,12 +1,62 @@
 ---
 title: "Get Walmart Product Price History"
 openapi: "GET /walmart/product/price-history"
-description: "This endpoint accepts a Walmart product code and returns an array of the price history."
+description: "This endpoint accepts a Walmart product code and returns an array of the buybox price history."
 ---
 
 <Note>
-  Coming Soon
+  **Rate Limit**: This endpoint has a default rate limit of **10 products/second** per account. Need higher limits? [**Contact our support team**](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
 </Note>
+
+<Note>
+  **Credit Cost**: This endpoint costs **10 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+</Note>
+
+<RequestExample>
+
+```bash Example walmart_product_code price history request
+curl -X GET "http://rivin.ai/api/walmart/product/price-history?walmart_product_code=1370971228" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+``` successful response
+{
+	"walmart_product_code":"46275738",
+	"priceHistory":
+		[
+			{"date":"2024-09-02T04:17:40Z","price":39.88},
+			{"date":"2024-10-21T04:13:26Z","price":48.39},
+			{"date":"2024-10-22T04:14:28Z","price":39.88},
+			{"date":"2024-11-18T04:22:31Z","price":37.16},
+			{"date":"2024-11-19T04:13:32Z","price":39.88},
+			{"date":"2024-12-30T21:09:02Z","price":70.78},
+			{"date":"2024-12-31T04:15:07Z","price":39.88},
+			{"date":"2025-04-07T04:17:04Z","price":35.99},
+			{"date":"2025-04-08T04:13:39Z","price":35.5},
+			{"date":"2025-04-09T04:18:39Z","price":39.88},
+			{"date":"2025-04-11T04:21:08Z","price":34.79},
+			{"date":"2025-04-12T04:14:05Z","price":39.88},
+			{"date":"2025-04-29T15:59:21Z","price":35.79},
+			{"date":"2025-04-30T04:17:41Z","price":39.88},
+			{"date":"2025-05-24T04:17:28Z","price":37},
+			{"date":"2025-05-25T04:18:08Z","price":39.88},
+			{"date":"2025-05-28T04:22:28Z","price":41.94},
+			{"date":"2025-06-07T10:09:50Z","price":38.25},
+			{"date":"2025-06-09T04:18:41Z","price":41.94},
+			{"date":"2025-06-19T04:18:57Z","price":37.51},
+			{"date":"2025-06-20T04:22:19Z","price":41.94},
+			{"date":"2025-08-26T19:12:23Z","price":34.99},
+			{"date":"2025-08-27T12:55:26Z","price":41.94}
+		]
+}
+```
+
+</ResponseExample>
 
 ### Headers
 
@@ -18,24 +68,25 @@ description: "This endpoint accepts a Walmart product code and returns an array 
 
 ### Body
 
-<ParamField path="walmart_product_code" type="string">
+<ParamField path="walmart_product_code" type="string" required>
   The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.
 </ParamField>
 
 ### Response
 
-<ParamField path="upc" type="string">
-  The 12-digit universal product code (upc).
-</ParamField>
-
-<ParamField path="ean" type="string">
-  The 13-digit european article number(ean).
-</ParamField>
-
 <ParamField path="walmart_product_code" type="string">
   The (typically) 6-12 digit walmart product code.
 </ParamField>
 
-<ParamField path="price_history" type="json">
-  Enter a description
+<ParamField path="price_history" type="string">
+  List of price snapshots for the product, including:
+
+  - **date** _(string, ISO 8601)_ – The date/time the price was recorded.
+  - **price** _(number)_ – The listed buybox price at that time in the local currency (default USD)
 </ParamField>
+
+<Note>
+  This api/walmart/product/price-history endpoint **only tracks the Walmart buybox price and time** — not prices for each individual seller on a listing.
+
+  If you need per-seller visibility (prices, units in stock, sales per seller, etc.), please reference the **/api/walmart/oversight** endpoints instead.
+</Note>
