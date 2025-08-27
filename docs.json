@@ -33,8 +33,8 @@
           {
             "group": "Endpoints",
             "pages": [
-              "api-reference/endpoint/get-walmart-product",
-              "api-reference/endpoint/get-price-history",
+              "api-reference/endpoint/get-walmart-product-details",
+              "api-reference/endpoint/get-walmart-product-price-history",
               "api-reference/endpoint/post-walmart-oversight-product",
               "api-reference/endpoint/delete-walmart-oversight-product"
             ]
