@@ -1,0 +1,49 @@
+---
+title: "Get Oversight Data for Specific Product"
+openapi: "GET /walmart/oversight/product/{id}"
+description: "This endpoint returns detailed oversight tracking data for a specific product."
+---
+
+<Warning>
+  **🚧 Coming Soon**: This endpoint is currently in development and will be available soon. Stay tuned for updates!
+</Warning>
+
+<Note>
+  **Rate Limit**: This endpoint has a default rate limit of **10 requests/second** per account. Need higher limits? [Contact our support team](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
+</Note>
+
+<Note>
+  **Credit Cost**: This endpoint costs **4 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+</Note>
+
+<RequestExample>
+
+```bash Example request
+curl -X GET "http://rivin.ai/api/walmart/oversight/product/ov_123456789" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json API Response
+{
+  "id": "ov_123456789",
+  "walmart_product_code": "1370971228",
+  "user_id": "user_123",
+  "created_at": "2024-01-15T10:30:00Z",
+  "tracking_data": {
+    "current_price": 39.88,
+    "units_in_stock": 45,
+    "last_updated": "2024-01-15T10:30:00Z"
+  }
+}
+```
+
+</ResponseExample>
+
+<Note>
+  **Detailed Tracking**: This endpoint provides comprehensive oversight data for a specific tracked product, including current pricing, inventory levels, and tracking metadata. Use this to get real-time insights into your tracked products.
+</Note>

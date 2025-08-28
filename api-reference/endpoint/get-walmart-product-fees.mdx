@@ -1,0 +1,45 @@
+---
+title: "Get Walmart Fees for a Product"
+openapi: "GET /walmart/product/fees"
+description: "This endpoint returns the various fees associated with selling a specific Walmart product."
+---
+
+<Warning>
+  **🚧 Coming Soon**: This endpoint is currently in development and will be available soon. Stay tuned for updates!
+</Warning>
+
+<Note>
+  **Rate Limit**: This endpoint has a default rate limit of **10 products/second** per account. Need higher limits? [Contact our support team](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
+</Note>
+
+<Note>
+  **Credit Cost**: This endpoint costs **3 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+</Note>
+
+<RequestExample>
+
+```bash Example request
+curl -X GET "http://rivin.ai/api/walmart/product/fees?walmart_product_code=1370971228" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json API Response
+{
+  "walmart_product_code": "1370971228",
+  "referral_fee": 15.0,
+  "closing_fee": 0.99,
+  "shipping_fee": 4.99,
+  "total_fees": 20.98
+}
+```
+
+</ResponseExample>
+
+<Note>
+  **Fee Structure**: Fees may vary based on product category, seller type, and current promotions. All fees are in USD and represent the total cost to sell the product on Walmart's marketplace.
+</Note>

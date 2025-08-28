@@ -9,20 +9,25 @@ The Rivin.ai Walmart API provides comprehensive access to Walmart's product cata
 
 ## **API Overview**
 
-Our API currently offers three main categories of endpoints, with **20+ additional endpoints in active development**:
+Our API offers comprehensive Walmart data access across multiple categories:
 
 ### **Real-time Product Info**
 - **GET** `/walmart/product/details` - Retrieve detailed product information using UPC, EAN, or Walmart product codes
+- **GET** `/walmart/product/units-in-stock` - Get current inventory levels for each seller of a product
+- **GET** `/walmart/product/fees` - Retrieve fee structure information for selling products
 
 ### **Historical Product Info**
 - **GET** `/walmart/product/price-history` - Access historical pricing data for products
+- **GET** `/walmart/product/units-sold-history` - Access estimated sales history for products
 
-### **Oversight Product Management**
+### **Oversight Tracking**
 - **POST** `/walmart/oversight/product` - Add products to your oversight tracking system
-- **DELETE** `/walmart/oversight/product/{id}` - Remove products from oversight tracking
+- **GET** `/walmart/oversight/products` - List all currently tracked oversight products
+- **GET** `/walmart/oversight/product/{id}` - Get detailed oversight data for a specific product
+- **DELETE** `/walmart/oversight/product` - Remove products from oversight tracking
 
 <Note>
-  **More Endpoints Coming Soon**: We're actively developing 20+ additional endpoints to expand our Walmart data coverage. Stay tuned for updates!
+  **Development Status**: Some endpoints are currently in development and will be available soon. Check individual endpoint documentation for current availability status.
 </Note>
 
 ## **Authentication**

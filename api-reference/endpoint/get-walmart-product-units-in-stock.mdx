@@ -1,0 +1,53 @@
+---
+title: "Get Units In Stock Per Seller"
+openapi: "GET /walmart/product/units-in-stock"
+description: "This endpoint returns the current inventory levels for each seller of a specific Walmart product."
+---
+
+<Warning>
+  **🚧 Coming Soon**: This endpoint is currently in development and will be available soon. Stay tuned for updates!
+</Warning>
+
+<Note>
+  **Rate Limit**: This endpoint has a default rate limit of **10 products/second** per account. Need higher limits? [Contact our support team](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
+</Note>
+
+<Note>
+  **Credit Cost**: This endpoint costs **5 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+</Note>
+
+<RequestExample>
+
+```bash Example request
+curl -X GET "http://rivin.ai/api/walmart/product/units-in-stock?walmart_product_code=1370971228" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json API Response
+{
+  "walmart_product_code": "1370971228",
+  "sellers": [
+    {
+      "seller_name": "Walmart.com",
+      "units_in_stock": 45,
+      "last_updated": "2024-01-15T10:30:00Z"
+    },
+    {
+      "seller_name": "Third Party Seller",
+      "units_in_stock": 12,
+      "last_updated": "2024-01-15T09:15:00Z"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+<Note>
+  **Inventory Tracking**: This endpoint provides real-time inventory levels for all sellers of a specific product. Data is updated frequently but may have slight delays depending on seller update frequency.
+</Note>

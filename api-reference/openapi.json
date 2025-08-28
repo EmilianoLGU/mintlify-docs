@@ -224,6 +224,263 @@
           }
         }
       }
+    },
+    "/walmart/product/units-in-stock": {
+      "get": {
+        "summary": "Get Units In Stock Per Seller",
+        "description": "This endpoint returns the current inventory levels for each seller of a specific Walmart product.",
+        "operationId": "getWalmartProductUnitsInStock",
+        "tags": ["Walmart Products"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "walmart_product_code",
+            "in": "query",
+            "description": "The Walmart product code to get inventory information for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1370971228"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitsInStock"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid product code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/product/fees": {
+      "get": {
+        "summary": "Get Walmart Fees for a Product",
+        "description": "This endpoint returns the various fees associated with selling a specific Walmart product.",
+        "operationId": "getWalmartProductFees",
+        "tags": ["Walmart Products"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "walmart_product_code",
+            "in": "query",
+            "description": "The Walmart product code to get fee information for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1370971228"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductFees"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid product code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/product/units-sold-history": {
+      "get": {
+        "summary": "Get Units Sold History Estimate",
+        "description": "This endpoint returns estimated sales history for a specific Walmart product.",
+        "operationId": "getWalmartProductUnitsSoldHistory",
+        "tags": ["Walmart Products"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "walmart_product_code",
+            "in": "query",
+            "description": "The Walmart product code to get sales history for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1370971228"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitsSoldHistory"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid product code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/oversight/products": {
+      "get": {
+        "summary": "Get List of Currently Tracked Oversight Products",
+        "description": "This endpoint returns a list of all products currently being tracked in oversight for the authenticated user.",
+        "operationId": "getWalmartOversightProducts",
+        "tags": ["Walmart Oversight"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OversightProduct"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/oversight/product/{id}": {
+      "get": {
+        "summary": "Get Oversight Data for Specific Product",
+        "description": "This endpoint returns detailed oversight tracking data for a specific product.",
+        "operationId": "getWalmartOversightProduct",
+        "tags": ["Walmart Oversight"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the oversight product to retrieve data for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OversightProductData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid product ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -330,6 +587,140 @@
             "description": "When the product was added to oversight",
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "UnitsInStock": {
+        "type": "object",
+        "properties": {
+          "walmart_product_code": {
+            "description": "The Walmart product code.",
+            "type": "string"
+          },
+          "sellers": {
+            "description": "Array of seller inventory information",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seller_name": {
+                  "type": "string",
+                  "description": "Name of the seller"
+                },
+                "units_in_stock": {
+                  "type": "integer",
+                  "description": "Number of units currently in stock"
+                },
+                "last_updated": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the inventory was last updated"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ProductFees": {
+        "type": "object",
+        "properties": {
+          "walmart_product_code": {
+            "description": "The Walmart product code.",
+            "type": "string"
+          },
+          "referral_fee": {
+            "type": "number",
+            "format": "float",
+            "description": "Referral fee percentage"
+          },
+          "closing_fee": {
+            "type": "number",
+            "format": "float",
+            "description": "Closing fee amount"
+          },
+          "shipping_fee": {
+            "type": "number",
+            "format": "float",
+            "description": "Shipping fee amount"
+          },
+          "total_fees": {
+            "type": "number",
+            "format": "float",
+            "description": "Total fees for the product"
+          }
+        }
+      },
+      "UnitsSoldHistory": {
+        "type": "object",
+        "properties": {
+          "walmart_product_code": {
+            "description": "The Walmart product code.",
+            "type": "string"
+          },
+          "sales_history": {
+            "description": "Array of sales data over time",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Date of the sales data"
+                },
+                "units_sold": {
+                  "type": "integer",
+                  "description": "Estimated units sold on that date"
+                },
+                "confidence_level": {
+                  "type": "string",
+                  "enum": ["high", "medium", "low"],
+                  "description": "Confidence level of the estimate"
+                }
+              }
+            }
+          }
+        }
+      },
+      "OversightProductData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the oversight product",
+            "type": "string"
+          },
+          "walmart_product_code": {
+            "description": "The Walmart product code being tracked",
+            "type": "string"
+          },
+          "user_id": {
+            "description": "The user ID who is tracking this product",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "When the product was added to oversight",
+            "type": "string",
+            "format": "date-time"
+          },
+          "tracking_data": {
+            "description": "Current tracking data for the product",
+            "type": "object",
+            "properties": {
+              "current_price": {
+                "type": "number",
+                "format": "float",
+                "description": "Current product price"
+              },
+              "units_in_stock": {
+                "type": "integer",
+                "description": "Current units in stock"
+              },
+              "last_updated": {
+                "type": "string",
+                "format": "date-time",
+                "description": "When the data was last updated"
+              }
+            }
           }
         }
       },

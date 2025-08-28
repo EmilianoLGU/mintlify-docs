@@ -1,0 +1,58 @@
+---
+title: "Get Units Sold History Estimate"
+openapi: "GET /walmart/product/units-sold-history"
+description: "This endpoint returns estimated sales history for a specific Walmart product."
+---
+
+<Warning>
+  **🚧 Coming Soon**: This endpoint is currently in development and will be available soon. Stay tuned for updates!
+</Warning>
+
+<Note>
+  **Rate Limit**: This endpoint has a default rate limit of **10 products/second** per account. Need higher limits? [Contact our support team](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
+</Note>
+
+<Note>
+  **Credit Cost**: This endpoint costs **8 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+</Note>
+
+<RequestExample>
+
+```bash Example request
+curl -X GET "http://rivin.ai/api/walmart/product/units-sold-history?walmart_product_code=1370971228" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json API Response
+{
+  "walmart_product_code": "1370971228",
+  "sales_history": [
+    {
+      "date": "2024-01-15",
+      "units_sold": 25,
+      "confidence_level": "high"
+    },
+    {
+      "date": "2024-01-14",
+      "units_sold": 18,
+      "confidence_level": "medium"
+    },
+    {
+      "date": "2024-01-13",
+      "units_sold": 32,
+      "confidence_level": "high"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+<Note>
+  **Sales Estimates**: This endpoint provides estimated daily sales data based on various factors including market analysis, historical trends, and available data sources. Confidence levels indicate the reliability of each estimate.
+</Note>

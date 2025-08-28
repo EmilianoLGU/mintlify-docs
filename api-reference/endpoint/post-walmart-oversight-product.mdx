@@ -1,9 +1,47 @@
 ---
 title: "Add Walmart Product To Oversight Tracking"
-openapi: "POST /plants"
+openapi: "POST /walmart/oversight/product"
 description: "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product."
 ---
 
+<Warning>
+  **🚧 Coming Soon**: This endpoint is currently in development and will be available soon. Stay tuned for updates!
+</Warning>
+
 <Note>
-  Coming Soon
+  **Rate Limit**: This endpoint has a default rate limit of **10 requests/second** per account. Need higher limits? [Contact our support team](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
+</Note>
+
+<Note>
+  **Credit Cost**: This endpoint costs **2 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+</Note>
+
+<RequestExample>
+
+```bash Example request
+curl -X POST "http://rivin.ai/api/walmart/oversight/product" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)" \
+  -d '{
+    "walmart_product_code": "1370971228"
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json API Response
+{
+  "id": "ov_123456789",
+  "walmart_product_code": "1370971228",
+  "user_id": "user_123",
+  "created_at": "2024-01-15T10:30:00Z"
+}
+```
+
+</ResponseExample>
+
+<Note>
+  **Oversight Tracking**: Add products to your oversight dashboard to track pricing, inventory, and sales data over time. This provides comprehensive monitoring capabilities for your product portfolio.
 </Note>
