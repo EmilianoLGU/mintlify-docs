@@ -1,6 +1,6 @@
 ---
 title: "Add Walmart Product To Oversight Tracking"
-openapi: "POST /walmart/oversight/product"
+openapi: "POST /walmart/oversight/products"
 description: "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product."
 ---
 
@@ -19,7 +19,7 @@ description: "This endpoint adds a product to a user's tracked products in Rivin
 <RequestExample>
 
 ```bash Example request
-curl -X POST "http://rivin.ai/api/walmart/oversight/product" \
+curl -X POST "http://rivin.ai/api/walmart/oversight/products" \
   -H "Content-Type: application/json" \
   -H "x-api-key: (YOUR_API_KEY_HERE)" \
   -d '{

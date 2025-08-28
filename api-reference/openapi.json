@@ -134,7 +134,7 @@
         }
       }
     },
-    "/walmart/oversight/product": {
+    "/walmart/oversight/products": {
       "post": {
         "summary": "Add Walmart Product To Oversight Tracking",
         "description": "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product.",
@@ -185,9 +185,55 @@
           }
         }
       },
+      "get": {
+        "summary": "Get List of Currently Tracked Oversight Products",
+        "description": "This endpoint returns a list of all products currently being tracked in oversight for the authenticated user.",
+        "operationId": "getWalmartOversightProducts",
+        "tags": ["Walmart Oversight"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OversightProduct"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/walmart/oversight/products/{id}": {
       "delete": {
         "summary": "Delete Walmart Product From Oversight Tracking",
         "description": "This endpoint deletes a product from a user's tracked products in Rivin.ai's Oversight Tracking.",
+        "operationId": "deleteWalmartOversightProduct",
+        "tags": ["Walmart Oversight"],
         "parameters": [
           {
             "name": "x-api-key",
@@ -214,6 +260,64 @@
           },
           "400": {
             "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get Oversight Data for Specific Product",
+        "description": "This endpoint returns detailed oversight tracking data for a specific product.",
+        "operationId": "getWalmartOversightProduct",
+        "tags": ["Walmart Oversight"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the oversight product to retrieve data for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OversightProductData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid product ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -352,6 +456,17 @@
               "type": "string"
             },
             "example": "1370971228"
+          },
+          {
+            "name": "time_period",
+            "in": "query",
+            "description": "The time period for sales history data. Different periods have different credit costs: 1 month (5 credits), 6 months (25 credits), 1 year (50 credits), 3 years (100 credits), all time (150 credits).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["1month", "6months", "1year", "3years", "alltime"]
+            },
+            "example": "6months"
           }
         ],
         "responses": {
@@ -367,110 +482,6 @@
           },
           "400": {
             "description": "Bad request - Invalid product code",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/walmart/oversight/products": {
-      "get": {
-        "summary": "Get List of Currently Tracked Oversight Products",
-        "description": "This endpoint returns a list of all products currently being tracked in oversight for the authenticated user.",
-        "operationId": "getWalmartOversightProducts",
-        "tags": ["Walmart Oversight"],
-        "parameters": [
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OversightProduct"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/walmart/oversight/product/{id}": {
-      "get": {
-        "summary": "Get Oversight Data for Specific Product",
-        "description": "This endpoint returns detailed oversight tracking data for a specific product.",
-        "operationId": "getWalmartOversightProduct",
-        "tags": ["Walmart Oversight"],
-        "parameters": [
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the oversight product to retrieve data for.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OversightProductData"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request - Invalid product ID",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Product not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -657,6 +668,15 @@
             "description": "The Walmart product code.",
             "type": "string"
           },
+          "time_period": {
+            "description": "The time period for which sales history was requested",
+            "type": "string",
+            "enum": ["1month", "6months", "1year", "3years", "alltime"]
+          },
+          "credit_cost": {
+            "description": "The number of credits consumed for this request",
+            "type": "integer"
+          },
           "sales_history": {
             "description": "Array of sales data over time",
             "type": "array",
@@ -671,11 +691,6 @@
                 "units_sold": {
                   "type": "integer",
                   "description": "Estimated units sold on that date"
-                },
-                "confidence_level": {
-                  "type": "string",
-                  "enum": ["high", "medium", "low"],
-                  "description": "Confidence level of the estimate"
                 }
               }
             }

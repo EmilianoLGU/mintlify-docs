@@ -13,13 +13,20 @@ description: "This endpoint returns estimated sales history for a specific Walma
 </Note>
 
 <Note>
-  **Credit Cost**: This endpoint costs **8 credits** per successful request. Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
+  **Credit Cost**: This endpoint costs range from **5 to 150 credits** depending on the time period requested:
+  - **1 month**: 5 credits
+  - **6 months**: 25 credits
+  - **1 year**: 50 credits  
+  - **3 years**: 100 credits
+  - **All time**: 150 credits
+  
+  Credits are only deducted when the API call succeeds and returns product data. Failed requests (errors, rate limits, etc.) do not consume credits.
 </Note>
 
 <RequestExample>
 
 ```bash Example request
-curl -X GET "http://rivin.ai/api/walmart/product/units-sold-history?walmart_product_code=1370971228" \
+curl -X GET "http://rivin.ai/api/walmart/product/units-sold-history?walmart_product_code=1370971228&time_period=6months" \
   -H "Content-Type: application/json" \
   -H "x-api-key: (YOUR_API_KEY_HERE)"
 ```
@@ -31,21 +38,20 @@ curl -X GET "http://rivin.ai/api/walmart/product/units-sold-history?walmart_prod
 ```json API Response
 {
   "walmart_product_code": "1370971228",
+  "time_period": "6months",
+  "credit_cost": 25,
   "sales_history": [
     {
       "date": "2024-01-15",
-      "units_sold": 25,
-      "confidence_level": "high"
+      "units_sold": 25
     },
     {
       "date": "2024-01-14",
-      "units_sold": 18,
-      "confidence_level": "medium"
+      "units_sold": 18
     },
     {
       "date": "2024-01-13",
-      "units_sold": 32,
-      "confidence_level": "high"
+      "units_sold": 32
     }
   ]
 }
@@ -54,5 +60,9 @@ curl -X GET "http://rivin.ai/api/walmart/product/units-sold-history?walmart_prod
 </ResponseExample>
 
 <Note>
-  **Sales Estimates**: This endpoint provides estimated daily sales data based on various factors including market analysis, historical trends, and available data sources. Confidence levels indicate the reliability of each estimate.
+  **Time Periods**: The `time_period` query parameter is required and specifies how much historical data you need. Longer time periods provide more comprehensive insights but cost more credits.
+</Note>
+
+<Note>
+  **Sales Estimates**: This endpoint provides estimated daily sales data based on various factors including market analysis, historical trends, and available data sources.
 </Note>

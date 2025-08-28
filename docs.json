@@ -34,10 +34,10 @@
             "group": "Product Endpoints",
             "pages": [
               "api-reference/endpoint/get-walmart-product-details",
-              "api-reference/endpoint/get-walmart-product-price-history",
+              "api-reference/endpoint/get-walmart-product-fees",
               "api-reference/endpoint/get-walmart-product-units-in-stock",
-              "api-reference/endpoint/get-walmart-product-units-sold-history",
-              "api-reference/endpoint/get-walmart-product-fees"
+              "api-reference/endpoint/get-walmart-product-price-history",
+              "api-reference/endpoint/get-walmart-product-units-sold-history"
             ]
           },
           {

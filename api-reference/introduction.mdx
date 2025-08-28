@@ -21,10 +21,10 @@ Our API offers comprehensive Walmart data access across multiple categories:
 - **GET** `/walmart/product/units-sold-history` - Access estimated sales history for products
 
 ### **Oversight Tracking**
-- **POST** `/walmart/oversight/product` - Add products to your oversight tracking system
+- **POST** `/walmart/oversight/products` - Add products to your oversight tracking system
 - **GET** `/walmart/oversight/products` - List all currently tracked oversight products
-- **GET** `/walmart/oversight/product/{id}` - Get detailed oversight data for a specific product
-- **DELETE** `/walmart/oversight/product` - Remove products from oversight tracking
+- **GET** `/walmart/oversight/products/{id}` - Get detailed oversight data for a specific product
+- **DELETE** `/walmart/oversight/products/{id}` - Remove products from oversight tracking
 
 <Note>
   **Development Status**: Some endpoints are currently in development and will be available soon. Check individual endpoint documentation for current availability status.
@@ -45,7 +45,7 @@ All API endpoints require authentication using your API key. Include your key in
 <RequestExample>
 
 ```bash Authentication Example
-curl -X GET "https://rivin.ai/api/walmart/product?upc=040094535309" \
+curl -X GET "https://rivin.ai/api/walmart/product/details?upc=040094535309" \
   -H "Content-Type: application/json" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```

@@ -1,6 +1,6 @@
 ---
 title: "Delete Walmart Product From Oversight Tracking"
-openapi: "DELETE /walmart/oversight/product"
+openapi: "DELETE /walmart/oversight/products/{id}"
 description: "This endpoint deletes a product from a user's tracked products in Rivin.ai's Oversight Tracking."
 ---
 
@@ -19,7 +19,7 @@ description: "This endpoint deletes a product from a user's tracked products in 
 <RequestExample>
 
 ```bash Example request
-curl -X DELETE "http://rivin.ai/api/walmart/oversight/product?id=ov_123456789" \
+curl -X DELETE "http://rivin.ai/api/walmart/oversight/products/ov_123456789" \
   -H "Content-Type: application/json" \
   -H "x-api-key: (YOUR_API_KEY_HERE)"
 ```
