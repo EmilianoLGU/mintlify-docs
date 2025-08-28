@@ -21,12 +21,16 @@
         "description": "This endpoint accepts a UPC, EAN, or Walmart product code and returns the matching Walmart product listing with basic product data.",
         "operationId": "getWalmartProductDetails",
         "tags": ["Walmart Products"],
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
         "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "upc",
             "in": "query",
@@ -85,12 +89,16 @@
         "description": "This endpoint accepts a Walmart product code and returns an array of the price history.",
         "operationId": "getWalmartProductPriceHistory",
         "tags": ["Walmart Products"],
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
         "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "walmart_product_code",
             "in": "query",
@@ -132,9 +140,15 @@
         "description": "This endpoint adds a product to a user's tracked products in Rivin.ai's Oversight product.",
         "operationId": "addWalmartOversightProduct",
         "tags": ["Walmart Oversight"],
-        "security": [
+        "parameters": [
           {
-            "apiKeyAuth": []
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -173,13 +187,17 @@
       },
       "delete": {
         "summary": "Delete Walmart Product From Oversight Tracking",
-        "description": "This endpoint deletes a product from a user's tracked products in Rivin.ai's Oversight product.",
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
+        "description": "This endpoint deletes a product from a user's tracked products in Rivin.ai's Oversight Tracking.",
         "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "id",
             "in": "path",

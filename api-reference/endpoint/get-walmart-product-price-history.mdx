@@ -58,33 +58,6 @@ curl -X GET "http://rivin.ai/api/walmart/product/price-history?walmart_product_c
 
 </ResponseExample>
 
-### Headers
-
-<ParamField path="x-api-key" type="string" required="false">
-  Your unique API key for authentication.
-
-  This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [**Settings**](https://console.anthropic.com/settings/keys)\*\* page\*\*.
-</ParamField>
-
-### Body
-
-<ParamField path="walmart_product_code" type="string" required>
-  The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.
-</ParamField>
-
-### Response
-
-<ParamField path="walmart_product_code" type="string">
-  The (typically) 6-12 digit walmart product code.
-</ParamField>
-
-<ParamField path="price_history" type="string">
-  List of price snapshots for the product, including:
-
-  - **date** _(string, ISO 8601)_ – The date/time the price was recorded.
-  - **price** _(number)_ – The listed buybox price at that time in the local currency (default USD)
-</ParamField>
-
 <Note>
   This api/walmart/product/price-history endpoint **only tracks the Walmart buybox price and time** — not prices for each individual seller on a listing.
 
