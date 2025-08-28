@@ -48,7 +48,7 @@
           {
             "name": "walmart_product_code",
             "in": "query",
-            "description": "The (typically) 6-12 digit walmart product code that will be used to search Walmart's catalog.",
+            "description": "The (typically) 6-12 digit walmart product_code that will be used to search Walmart's catalog.\n\n\nNote: This endpoint accepts one of three identifier types (UPC, EAN, or Walmart product code). Only one parameter should be provided per request.",
             "schema": {
               "type": "string"
             },
