@@ -830,8 +830,7 @@
                 "minimum": 0,
                 "maximum": 100
               }
-            },
-            "required": ["total", "used_this_month", "remaining", "usage_percentage"]
+            }
           },
           "billing_period": {
             "description": "Billing period information",
@@ -852,8 +851,7 @@
                 "type": "integer",
                 "minimum": 0
               }
-            },
-            "required": ["current_period_start", "next_refresh_date", "days_until_refresh"]
+            }
           },
           "account_info": {
             "description": "Account information",
@@ -869,11 +867,9 @@
                 "type": "string",
                 "format": "date-time"
               }
-            },
-            "required": ["created_at", "last_updated"]
+            }
           }
-        },
-        "required": ["user_email", "credits", "billing_period", "account_info"]
+        }
       },
       "Error": {
         "required": [

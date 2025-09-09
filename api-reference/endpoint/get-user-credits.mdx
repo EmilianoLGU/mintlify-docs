@@ -32,10 +32,10 @@ curl -X GET "https://rivin.ai/api/user/credits" \
 {
   "user_email": "user@example.com",
   "credits": {
-    "total": 1000,
-    "used_this_month": 150,
-    "remaining": 850,
-    "usage_percentage": 15
+    "total": 300000,
+    "used_this_month": 114500,
+    "remaining": 185500,
+    "usage_percentage": 38
   },
   "billing_period": {
     "current_period_start": "2024-01-01T00:00:00Z",
@@ -51,27 +51,7 @@ curl -X GET "https://rivin.ai/api/user/credits" \
 
 </ResponseExample>
 
-## Response Fields
-
-### Credits Information
-- **`total`** - Your total monthly credit allocation
-- **`used_this_month`** - Number of credits consumed in the current billing period
-- **`remaining`** - Credits remaining for the current billing period
-- **`usage_percentage`** - Percentage of credits used (0-100)
-
-### Billing Period Information
-- **`current_period_start`** - Start date of the current billing period
-- **`next_refresh_date`** - When your credits will refresh (next billing cycle)
-- **`days_until_refresh`** - Number of days until your next credit refresh
-
-### Account Information
-- **`created_at`** - When your account was created
-- **`last_updated`** - When the data was last updated
 
 <Note>
   **Credit Refresh**: Credits refresh monthly based on your billing cycle. The exact refresh date depends on when your account was created or when you last upgraded your plan.
 </Note>
-
-<Warning>
-  **API Key Required**: This endpoint requires a valid API key in the `x-api-key` header. You can get your API key from the [Settings page](https://rivin.ai/settings).
-</Warning>
