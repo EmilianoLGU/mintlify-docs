@@ -1,0 +1,77 @@
+---
+title: "Get User Credit Information"
+openapi: "GET /user/credits"
+description: "This endpoint allows users to query their remaining credits and billing period information. It requires a valid API key and returns comprehensive credit usage information."
+---
+
+<Warning>
+  **🚧 Coming Soon**: This endpoint is currently in development and will be available soon. Stay tuned for updates!
+</Warning>
+
+<Note>
+  **Credit Cost**: This endpoint costs **0 credits** to query your credit information. It's free to check your remaining credits and billing status.
+</Note>
+
+<Note>
+  **Rate Limit**: This endpoint has a default rate limit of **10 requests/second** per account. Need higher limits? [Contact our support team](https://cal.com/rivin-ai/30min) - we can accommodate any rate limit requirements on request.
+</Note>
+
+<RequestExample>
+
+```bash Example request
+curl -X GET "https://rivin.ai/api/user/credits" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: (YOUR_API_KEY_HERE)"
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json API Response
+{
+  "user_email": "user@example.com",
+  "credits": {
+    "total": 1000,
+    "used_this_month": 150,
+    "remaining": 850,
+    "usage_percentage": 15
+  },
+  "billing_period": {
+    "current_period_start": "2024-01-01T00:00:00Z",
+    "next_refresh_date": "2024-02-01T00:00:00Z",
+    "days_until_refresh": 12
+  },
+  "account_info": {
+    "created_at": "2023-12-15T10:30:00Z",
+    "last_updated": "2024-01-15T14:22:00Z"
+  }
+}
+```
+
+</ResponseExample>
+
+## Response Fields
+
+### Credits Information
+- **`total`** - Your total monthly credit allocation
+- **`used_this_month`** - Number of credits consumed in the current billing period
+- **`remaining`** - Credits remaining for the current billing period
+- **`usage_percentage`** - Percentage of credits used (0-100)
+
+### Billing Period Information
+- **`current_period_start`** - Start date of the current billing period
+- **`next_refresh_date`** - When your credits will refresh (next billing cycle)
+- **`days_until_refresh`** - Number of days until your next credit refresh
+
+### Account Information
+- **`created_at`** - When your account was created
+- **`last_updated`** - When the data was last updated
+
+<Note>
+  **Credit Refresh**: Credits refresh monthly based on your billing cycle. The exact refresh date depends on when your account was created or when you last upgraded your plan.
+</Note>
+
+<Warning>
+  **API Key Required**: This endpoint requires a valid API key in the `x-api-key` header. You can get your API key from the [Settings page](https://rivin.ai/settings).
+</Warning>

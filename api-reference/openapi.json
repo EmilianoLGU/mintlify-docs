@@ -492,6 +492,67 @@
           }
         }
       }
+    },
+    "/user/credits": {
+      "get": {
+        "summary": "Get User Credit Information",
+        "description": "This endpoint allows users to query their remaining credits and billing period information. It requires a valid API key and returns comprehensive credit usage information.",
+        "operationId": "getUserCredits",
+        "tags": ["User Endpoints"],
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "Your unique API key for authentication. This key is required in the header of all API requests, to authenticate your account and access Rivin.ai's services. Get your API key through the [Settings](https://rivin.ai/settings) page.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserCredits"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found or credit information not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -738,6 +799,81 @@
             }
           }
         }
+      },
+      "UserCredits": {
+        "type": "object",
+        "properties": {
+          "user_email": {
+            "description": "The email address of the user",
+            "type": "string",
+            "format": "email"
+          },
+          "credits": {
+            "description": "Credit usage information",
+            "type": "object",
+            "properties": {
+              "total": {
+                "description": "Total monthly credit allocation",
+                "type": "integer"
+              },
+              "used_this_month": {
+                "description": "Number of credits consumed in the current billing period",
+                "type": "integer"
+              },
+              "remaining": {
+                "description": "Credits remaining for the current billing period",
+                "type": "integer"
+              },
+              "usage_percentage": {
+                "description": "Percentage of credits used (0-100)",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            },
+            "required": ["total", "used_this_month", "remaining", "usage_percentage"]
+          },
+          "billing_period": {
+            "description": "Billing period information",
+            "type": "object",
+            "properties": {
+              "current_period_start": {
+                "description": "Start date of the current billing period",
+                "type": "string",
+                "format": "date-time"
+              },
+              "next_refresh_date": {
+                "description": "When credits will refresh (next billing cycle)",
+                "type": "string",
+                "format": "date-time"
+              },
+              "days_until_refresh": {
+                "description": "Number of days until the next credit refresh",
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": ["current_period_start", "next_refresh_date", "days_until_refresh"]
+          },
+          "account_info": {
+            "description": "Account information",
+            "type": "object",
+            "properties": {
+              "created_at": {
+                "description": "When the account was created",
+                "type": "string",
+                "format": "date-time"
+              },
+              "last_updated": {
+                "description": "When the data was last updated",
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": ["created_at", "last_updated"]
+          }
+        },
+        "required": ["user_email", "credits", "billing_period", "account_info"]
       },
       "Error": {
         "required": [

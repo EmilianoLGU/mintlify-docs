@@ -48,6 +48,12 @@
               "api-reference/endpoint/get-walmart-oversight-product",
               "api-reference/endpoint/delete-walmart-oversight-product"
             ]
+          },
+          {
+            "group": "User Endpoints",
+            "pages": [
+              "api-reference/endpoint/get-user-credits"
+            ]
           }
         ]
       }
