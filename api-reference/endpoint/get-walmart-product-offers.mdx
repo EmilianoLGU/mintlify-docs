@@ -1,6 +1,6 @@
 ---
-title: "Get Units In Stock Per Seller"
-openapi: "GET /walmart/product/units-in-stock"
+title: "Get Product Offers"
+openapi: "GET /walmart/product/offers"
 description: "This endpoint returns the current inventory levels for each seller of a specific Walmart product."
 ---
 
@@ -19,7 +19,7 @@ description: "This endpoint returns the current inventory levels for each seller
 <RequestExample>
 
 ```bash Example request
-curl -X GET "http://rivin.ai/api/walmart/product/units-in-stock?walmart_product_code=1370971228" \
+curl -X GET "http://rivin.ai/api/walmart/product/offers?walmart_product_code=1370971228" \
   -H "Content-Type: application/json" \
   -H "x-api-key: (YOUR_API_KEY_HERE)"
 ```
@@ -51,3 +51,4 @@ curl -X GET "http://rivin.ai/api/walmart/product/units-in-stock?walmart_product_
 <Note>
   **Inventory Tracking**: This endpoint provides real-time inventory levels for all sellers of a specific product. Data is updated frequently but may have slight delays depending on seller update frequency.
 </Note>
+

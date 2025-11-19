@@ -329,11 +329,11 @@
         }
       }
     },
-    "/walmart/product/units-in-stock": {
+    "/walmart/product/offers": {
       "get": {
-        "summary": "Get Units In Stock Per Seller",
+        "summary": "Get Product Offers",
         "description": "This endpoint returns the current inventory levels for each seller of a specific Walmart product.",
-        "operationId": "getWalmartProductUnitsInStock",
+        "operationId": "getWalmartProductOffers",
         "tags": ["Walmart Products"],
         "parameters": [
           {
@@ -362,7 +362,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnitsInStock"
+                  "$ref": "#/components/schemas/Offers"
                 }
               }
             }
@@ -576,8 +576,8 @@
             "description": "The brand of the product",
             "type": "string"
           },
-          "title": {
-            "description": "The title/name of the product",
+          "name": {
+            "description": "The product name",
             "type": "string"
           },
           "categories": {
@@ -586,10 +586,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "product_type": {
-            "description": "The product type Walmart categorizes the product into. This is usually the last or second to last Walmart category.",
-            "type": "string"
           },
           "buybox_price": {
             "description": "The current price of the product buybox in USD down to the nearest cent.",
@@ -662,7 +658,7 @@
           }
         }
       },
-      "UnitsInStock": {
+      "Offers": {
         "type": "object",
         "properties": {
           "walmart_product_code": {

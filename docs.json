@@ -18,6 +18,12 @@
             "pages": [
               "introduction"
             ]
+          },
+          {
+            "group": "File Upload",
+            "pages": [
+              "file-upload/introduction"
+            ]
           }
         ]
       },
@@ -35,7 +41,7 @@
             "pages": [
               "api-reference/endpoint/get-walmart-product-details",
               "api-reference/endpoint/get-walmart-product-fees",
-              "api-reference/endpoint/get-walmart-product-units-in-stock",
+              "api-reference/endpoint/get-walmart-product-offers",
               "api-reference/endpoint/get-walmart-product-price-history",
               "api-reference/endpoint/get-walmart-product-units-sold-history"
             ]

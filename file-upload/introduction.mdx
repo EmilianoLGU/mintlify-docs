@@ -1,0 +1,198 @@
+---
+title: 'Bulk Analysis Guide'
+description: 'Upload files containing thousands of product identifiers and receive comprehensive analysis results for all products in one go'
+---
+
+## The 3 Minute Demo
+
+See our bulk analysis product in action with our detailed demo.
+
+<video 
+  autoPlay 
+  loop  
+  playsInline
+  controls
+  style={{ width: '100%', borderRadius: '1rem', border: '1px solid rgba(22, 163, 74, 0.2)' }}
+>
+  <source src="https://storage.googleapis.com/rivin-product-demos/bulk-analysis/bulk-analysis-demo.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+Our bulk analysis product enables you to upload files containing thousands of product identifiers and receive comprehensive analysis results for all products in one go. This is a great way to get a quick overview of your product catalogs and identify potential opportunities.
+
+## Supported Product Codes
+
+Types of product identifiers that can be analyzed:
+
+| Code Type | Format | Example |
+|-----------|--------|---------|
+| UPC (Universal Product Code) | 12 digits | 123456789012 |
+| EAN (European Article Number) | 13 digits | 1234567890123 |
+
+## File Format Guidelines
+
+Rivin requires a specific file structure for parsing. Your file must follow these strict formatting requirements to be processed successfully.
+
+### Supported File Types
+
+- Excel files (.xlsx, .xls)
+- CSV files (.csv)
+
+<Warning>
+  **Important: Excel Sheets with Subsheets**
+
+  **Excel files with multiple sheets (subsheets) are not supported.** Our bulk analysis feature can only process single-sheet Excel files or CSV files.
+
+  Please ensure your Excel file contains only one sheet with your product data. You can:
+  - Copy your data to a new single-sheet Excel file
+  - Or export your data as a CSV file
+  - Remove any extra sheets before uploading
+</Warning>
+
+### Required Column Headers
+
+**Your file must have clear, descriptive column names in the first row.** Our system uses strict column mapping based on exact header names. Column headers must match the following requirements:
+
+#### Required Column:
+
+- **"UPC"** or **"EAN"** - for product identifiers (**Required**)
+
+<Warning>
+  **Common Format Issues**
+
+  Most parsing problems are caused by improper UPC/EAN format. Ensure your product codes are correctly formatted:
+
+  - **UPC codes** must be exactly 12 digits
+  - **EAN codes** must be exactly 13 digits
+  - Do not include leading zeros that create incorrect lengths (e.g., a 14-digit "EAN" like `01234567890123` is invalid - it should be `1234567890123`)
+  - Do not include spaces, dashes, or other formatting characters
+
+  **Examples of incorrect formats:**
+  - `01234567890123` (14 digits - EAN with leading zero)
+  - `123-456-789-012` (UPC with dashes)
+  - `12345 67890 12` (UPC with spaces)
+
+  **Examples of correct formats:**
+  - `123456789012` (12-digit UPC)
+  - `1234567890123` (13-digit EAN)
+</Warning>
+
+#### Optional Columns:
+
+- **"Price"** or **"Cost"** - for supplier prices (if providing pricing data)
+- **"Length"**, **"Width"**, **"Height"** - for dimensions (if providing dimension data)
+- **"Weight"** - for product weight (if providing weight data)
+
+#### Column Header Requirements:
+
+- Headers must be in the first row of your file
+- Headers must match exactly (case-sensitive)
+- Generic names like "Column A", "Data 1" are not accepted
+- Abbreviations that aren't clear are not accepted
+- Special characters or symbols are not accepted
+- Very long column names are not accepted
+
+### File Structure Requirements
+
+| Requirement | Description | Status |
+|------------|-------------|--------|
+| File Format | File must be a single-sheet Excel file (.xlsx, .xls) or CSV file (.csv). Multi-sheet Excel files are not supported. | **Required** |
+| Column Headers | First row must contain clear, descriptive column headers that match our accepted header names exactly (case-sensitive). | **Required** |
+| Product Codes | Must include UPC or EAN product codes in a column with the exact header name "UPC" or "EAN". Our system uses strict column mapping based on exact header matches. | **Required** |
+| Supplier Prices | If including supplier/cost prices, the column header must be exactly "Price" or "Cost" to enable profitability calculations. | **Optional** |
+| Product Dimensions | If including dimensions, each measurement must be in its own column with these exact headers (case-sensitive): "length", "width", "height", "weight". These will be used as the primary data source. | **Optional** |
+
+### Example File Format
+
+<img
+  src="https://rivin.ai/bulk-analysis-file-example.png"
+  alt="Bulk Analysis File Example"
+  style={{ width: '100%', borderRadius: '0.5rem', border: '1px solid #e5e7eb', marginTop: '1rem' }}
+/>
+
+<Note>
+  **Important: Dimensions & Weight Format**
+
+  If you want to use your own dimensions and weight data, each measurement must be in its own column with these exact header names:
+
+  - **"length"** - Product length in inches
+  - **"width"** - Product width in inches
+  - **"height"** - Product height in inches
+  - **"weight"** - Product weight in pounds
+
+  These will be used for accurate WFS fee calculations and prioritized over other data sources.
+</Note>
+
+## What You'll Get
+
+Comprehensive analysis results for each product in your file.
+
+### Product Information
+
+- Walmart product code and canonical URL
+- Product title, brand, and category
+- Current buybox price and seller
+- Number of offers and selling status
+- Monthly units sold estimates
+- Product dimensions and weight (from multiple sources)
+
+### Profitability Analysis
+
+- Walmart referral fee percentage and amount
+- WFS (Walmart Fulfillment Services) fees
+- Net profit calculation
+- ROI percentage
+- Profit margin percentage
+
+## Frequently Asked Questions
+
+### What is the maximum number of products I can analyze at once?
+
+The maximum number of products per file depends on your subscription plan:
+
+- Base Plan: Up to 100,000 products per month
+- Pro Plan: Up to 250,000 products per month
+- Enterprise Plan: Custom limits available
+
+For optimal performance, we recommend splitting very large files into smaller batches of 5,000-10,000 products each. But Rivin can reliably handle up to 50,000 products at once from a single file.
+
+### How long does the analysis take?
+
+Processing time varies based on the number of products and current system load. Typically, you can expect to process products at around two minutes plus two additional minutes per 5,000 products:
+
+- Small batches (≤2,000): 2-3 minutes
+- Medium batches (2,001-6,000): 5-7 minutes
+- Large batches (6,001+): 2 minutes + 2 minute per 5,000 products
+
+You'll receive an immediate response with an estimated completion time. Processing continues in the background while you can monitor progress.
+
+### What happens if some product codes are invalid?
+
+The system will continue processing valid codes and provide a report of any invalid codes encountered. You'll receive detailed error messages explaining why specific codes couldn't be processed.
+
+### How accurate are the profitability calculations?
+
+Profitability calculations use real-time data and official fee structures:
+
+- **Current pricing:** Real-time buybox prices from Walmart
+- **Official fees:** Walmart's current referral fee percentages
+- **WFS fees:** Calculated based on actual dimensions and weight
+- **Multiple sources:** Prioritized data from most reliable sources
+
+Results are estimates based on current market conditions and may vary with actual sales.
+
+### Can I save or export the analysis results?
+
+Yes, analysis results are:
+
+- stored in your account for future access
+- available for download in CSV format
+- available for download with filtering applied in CSV format
+
+### What if I need to process more than the plan limits?
+
+If you need to process more products than your current plan allows:
+
+- **Upgrade your plan by [contacting us](https://cal.com/rivin-ai/30min):** Higher tiers support larger files
+
+Monthly limits reset at the beginning of each billing cycle.
