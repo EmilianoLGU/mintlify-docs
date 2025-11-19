@@ -20,9 +20,9 @@
             ]
           },
           {
-            "group": "File Upload",
+            "group": "Application Guide",
             "pages": [
-              "file-upload/introduction"
+              "bulk-analysis/introduction"
             ]
           }
         ]
@@ -59,17 +59,6 @@
             "group": "User Endpoints",
             "pages": [
               "api-reference/endpoint/get-user-credits"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "File Upload Documentation",
-        "groups": [
-          {
-            "group": "File Upload Docs",
-            "pages": [
-              "file-upload-documentation"
             ]
           }
         ]
