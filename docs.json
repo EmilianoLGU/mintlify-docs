@@ -62,6 +62,17 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "File Upload Documentation",
+        "groups": [
+          {
+            "group": "File Upload Docs",
+            "pages": [
+              "file-upload-documentation"
+            ]
+          }
+        ]
       }
     ],
     "global": {
