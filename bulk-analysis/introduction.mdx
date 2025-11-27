@@ -64,11 +64,13 @@ Rivin requires a specific file structure for parsing. Your file must follow thes
 
   - **UPC codes** must be exactly 12 digits
   - **EAN codes** must be exactly 13 digits
+  - **14-digit GTINs are not yey supported** - Support for 14-digit GTINs will be added soon
   - Do not include leading zeros that create incorrect lengths (e.g., a 14-digit "EAN" like `01234567890123` is invalid - it should be `1234567890123`)
   - Do not include spaces, dashes, or other formatting characters
 
   **Examples of incorrect formats:**
-  - `01234567890123` (14 digits - EAN with leading zero)
+  - `01234567890123` (14 digits - EAN with leading zero, not supported)
+  - `12345678901234` (14-digit GTIN, not yet supported)
   - `123-456-789-012` (UPC with dashes)
   - `12345 67890 12` (UPC with spaces)
 
