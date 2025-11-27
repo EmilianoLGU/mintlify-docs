@@ -102,7 +102,9 @@ Rivin requires a specific file structure for parsing. Your file must follow thes
 | Column Headers | First row must contain clear, descriptive column headers that match our accepted header names exactly (case-sensitive). | **Required** |
 | Product Codes | Must include UPC or EAN product codes in a column with the exact header name "UPC" or "EAN". Our system uses strict column mapping based on exact header matches. | **Required** |
 | Supplier Prices | If including supplier/cost prices, the column header must be exactly "Price" or "Cost" to enable profitability calculations. | **Optional** |
-| Product Dimensions | If including dimensions, each measurement must be in its own column with these exact headers (case-sensitive): "length", "width", "height", "weight". These will be used as the primary data source. | **Optional** |
+| Product Dimensions | If including dimensions, each measurement must be in its own column with these exact headers (case-sensitive): "length", "width", "height". The measurements must be in inches. | **Optional** |
+| Product Weight | If including weight, the column header must be exactly "weight" to enable profitability calculations. The weight must be in pounds. | **Optional** |
+
 
 ### Example File Format
 
