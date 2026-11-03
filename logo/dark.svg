@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 36" width="168" height="36">
-  <g transform="translate(0 4) scale(1.5) translate(-10 -12)" fill="#6e9bff">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 168 48" width="168" height="48">
+  <g transform="translate(0 4) scale(1.5) translate(-10 -12)" fill="#0062ff">
     <path d="M10 30 L28 12 L28 18 L16 30 Z"/>
     <path d="M22 12 L36 12 L36 26 L30 26 L30 18 L22 18 Z"/>
   </g>
-  <text x="48" y="27" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="-0.5" fill="#ffffff">Rivin<tspan fill="#6e9bff">.ai</tspan></text>
+  <text x="48" y="27" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="-0.5" fill="#ffffff">Rivin<tspan fill="#0062ff">.ai</tspan></text>
 </svg>

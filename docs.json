@@ -4,8 +4,8 @@
   "name": "Rivin.ai Developer API",
   "colors": {
     "primary": "#0062FF",
-    "light": "#6E9BFF",
-    "dark": "#004CCA"
+    "light": "#0062FF",
+    "dark": "#0062FF"
   },
   "favicon": "/favicon.svg",
   "navigation": {
